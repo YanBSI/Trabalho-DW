@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Produtos</title>
+    <link rel="stylesheet" href="../home/home-styles.css">
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+
+        header {
+            background: #e0f7fa;
+            color: #000000;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #000000;
+            text-decoration: none;
+            padding: 5px 10px;
+        }
+
+        nav ul li a:hover {
+            background: #575757;
+            border-radius: 4px;
+        }
+
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        #productList {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .product-item:hover {
+            transform: scale(1.02);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product-item h3 {
+            margin: 10px 0;
+        }
+
+        .product-item p {
+            margin: 5px 0;
+        }
+
+
+        button {
+            background: #000000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #191c1f;
+        }
+
+
+        .modal {
+            display: none;
+
+            position: fixed;
+
+            z-index: 1000;
+
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+
+            background-color: rgba(0, 0, 0, 0.7);
+
+        }
+
+        .modal-content {
+            background-color: #fff;
+
+            margin: 15% auto;
+
+            padding: 20px;
+            border: 1px solid #888;
+
+            width: 90%;
+
+            max-width: 400px;
+
+            border-radius: 8px;
+
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .close {
+            color: #aaa;
+
+            float: right;
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+
+            text-decoration: none;
+
+            cursor: pointer;
+
+        }
+
+
+        form {
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+        label {
+            margin: 10px 0 5px;
+
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 5px;
+
+            margin-bottom: 15px;
+
+            font-size: 16px;
+
+        }
+
+
+        button[type="submit"] {
+            background: #000000;
+
+            color: white;
+
+            border: none;
+
+            padding: 10px 15px;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            transition: background 0.3s;
+
+        }
+
+        button[type="submit"]:hover {
+            background: #0056b3;
+
+        }
+
+
+
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #e0f7fa;
+            color: #000000;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../home/index.html">Home</a></li>
+                <li><a href="products.html">Produtos</a></li>
+                <li><a href="../contact/contact.html">Contato</a></li>
+                <li><a href="../users/users.html">Usuários</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <button id="addProductBtn">Adicionar Produto</button>
+        <div id="productList"></div>
+    </main>
+
+   
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Adicionar Produto</h2>
+            <form id="productForm">
+                <label for="title">Título:</label>
+                <input type="text" id="title" required>
+                <label for="description">Descrição:</label>
+                <input type="text" id="description" required>
+                <label for="price">Preço:</label>
+                <input type="number" id="price" required>
+                <label for="brand">Marca:</label>
+                <input type="text" id="brand" required>
+                <label for="category">Categoria:</label>
+                <input type="text" id="category" required>
+                <label for="thumbnail">URL da Foto:</label>
+                <input type="text" id="thumbnail">
+                <button type="submit">Adicionar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Loja de cosméticos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="productsScript.js"></script>
+</body>
+
+</html>

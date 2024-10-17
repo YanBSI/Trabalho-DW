@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .user-item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .user-item div {
+            margin: 5px 0;
+        }
+
+        button {
+            background-color: rgb(0, 0, 0);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+
+        input {
+            margin-bottom: 5px;
+            padding: 8px;
+            width: calc(100% - 16px);
+        }
+    </style>
+    <link rel="stylesheet" href="../home/home-styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../home/index.html">Home</a></li>
+                <li><a href="../products/products.html">Produtos</a></li>
+                <li><a href="../contact/contact.html">Contato</a></li>
+                <li><a href="../users/users.html">Usuários</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Gerenciamento de Usuários</h1>
+    <button onclick="openModal()">Adicionar Novo Usuário</button>
+
+    <div id="user-list"></div>
+
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Adicionar Novo Usuário</h2>
+            <input type="text" id="firstName" placeholder="Nome" />
+            <input type="text" id="lastName" placeholder="Sobrenome" />
+            <input type="email" id="email" placeholder="Email" />
+            <input type="number" id="age" placeholder="Idade" />
+            <input type="url" id="photo" placeholder="URL da Foto (opcional)" />
+            <button onclick="addUser()">Adicionar Usuário</button>
+        </div>
+    </div>
+
+    <div id="user-list"></div>
+
+    <script src="usersScript.js"></script>
+    <footer>
+        <p>© 2024 Loja de produtos. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
